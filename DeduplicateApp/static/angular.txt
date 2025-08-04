@@ -1,0 +1,111 @@
+to solve cors error use below url in chrome to add extension then chnage from off to on
+
+https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US
+Once installed, click it in your browser to activate the extension. Make sure the icon’s label goes from “off” enter image description here to “on”enter image description here; Then refresh your application, and your API requests should now work! The plugin definitely addresses the issue. However, this fix only applies to your own machine. In local development, it’s fine to have a plugin installed that can help you get past the error.
+
+
+C:\Python27\
+C:\Python27\Scripts
+
+set above python path for angular
+
+
+https://dzone.com/articles/angular-5-material-design-login-application
+https://www.angularjswiki.com/angular/angular-2-hello-world-example/
+
+
+install npm install --save @angular/material @angular/cdk @angular/animations
+npm install angular2-toaster
+npm install ng2-slim-loading-bar
+npm install --save rxjs-compat
+npm install @angular/http@latest
+
+install node js
+then open command prompt and run below commaand
+
+npm install -g typescript
+npm install -g @angular/cli
+
+command to create new project
+ng new --skip-git hello-world-angular
+
+command to start server
+ng serve
+
+to create own module
+ng generate component hello-world
+
+add new module inside
+
+src/app/app.component.ts then chnage to below lines
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-hello-world',
+  templateUrl: './hello-world/hello-world.component.html',
+  styleUrls: ['./hello-world/hello-world.component.css']
+})
+export class AppComponent {
+  title = 'hello-world-angular';
+}
+
+working one
+@Component({
+  selector: 'hello',
+  template: '<h1>Hello {{name}}!</h1><br/><button (click)="clickMe()">Click</button> <br/> <p><strong>{{msg}}</strong></p><br/><mat-form-field class="example-full-width"><input matInput placeholder="user" [(ngModel)]="user" name="user" required></mat-form-field><mat-form-field class="example-full-width"><input matInput placeholder="pass" [(ngModel)]="pass" name="pass" required></mat-form-field><button (click)="login()">Click</button><br/> <p><strong>{{msg1}}</strong></p><br/>',
+  styles: ['h1 { font-family: Lato; }']
+})
+
+constructor(private router: Router) { }
+username: string;
+password: string;
+  ngOnInit() {
+  }
+
+  login(){
+    if(this.username == 'admin' && this.password == 'admin'){
+     this.router.navigate(["user"]);
+    }else {
+      alert("Invalid credentials");
+    }
+  }
+
+
+
+
+login() {
+        this.loading = true;
+	this.slimLoadingBarService.start();
+
+        this.dataService.add(this.model.username,this.model.username)
+            .subscribe((data: any[]) => this.values = data,
+            error => () => {
+	        alert(this.model.username+" 333$$$ "+this.model.password);
+                this.toasterService.pop('error', 'Damn', 'Something went wrong...');
+            },
+            () => {
+	        	 alert(this.model.username+" $$$ "+this.model.password);
+                this.toasterService.pop('success', 'Complete', 'Getting all values complete');
+                this.slimLoadingBarService.complete();
+            });
+        if (this.model.username == "admin" && this.model.password == "admin") {
+           alert("valid credentials");
+	} else {
+	   alert("Invalid credentials");
+        }
+    }
+  
+
+ <table *ngIf="values.length">  <!--Don't show nothing if no data-->
+<tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    
+</tr>
+<tr *ngFor="let item of values">
+   <td>{{item.firstname}}</td>
+   <td>{{item.lastname}}</td>
+   
+</tr>
+</table>
